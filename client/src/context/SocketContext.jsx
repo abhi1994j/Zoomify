@@ -4,17 +4,17 @@ import socketIoClient from 'socket.io-client';
 import { useClient, useMicrophoneAndCameraTracks } from '../AgoraSetup'
 
 
- 
+
 export const SocketContext = createContext();
 
-const WS = 'http://localhost:6001';
+const WS = process.env.REACT_APP_API_BASE_URL;
 
 const socket = socketIoClient(WS);
 
 
 
 export const SocketContextProvider =  ({children}) => {
-  
+
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
 
@@ -38,7 +38,7 @@ export const SocketContextProvider =  ({children}) => {
 
 
   const [newMeetType, setNewMeetType] = useState('');
-  
+
   useEffect(()=>{
 
     socket.on('room-created', ({roomId, meetType}) =>{
@@ -50,13 +50,13 @@ export const SocketContextProvider =  ({children}) => {
       }else if(meetType === 'scheduled'){
         navigate(`/profile`);
       }
-      
+
     });
 
   }, [socket]);
 
 
-  
+
   return (
     <SocketContext.Provider  value={{myMeets, setMyMeets, newMeetType, setNewMeetType, participants, setParticipants, userId, socket, inCall, setInCall, ready, tracks, screenTrack, setScreenTrack, client, users, setUsers, start, setStart, participantsListOpen, setParticipantsListOpen, chatsContainerOpen, setChatsContainerOpen}} >{children}</SocketContext.Provider>
   )

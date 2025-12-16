@@ -16,7 +16,10 @@ export const AuthContextProvider = ({ children }) => {
   });
 
   const login = async (inputs) => {
-    const res = await axios.post('http://localhost:6001/auth/login', inputs);
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/auth/login`,
+      inputs
+    );
 
     localStorage.setItem('userToken', res.data.token);
     localStorage.setItem('userId', res.data.user._id);
@@ -33,7 +36,10 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const register = async (inputs) => {
-    const res = await axios.post('http://localhost:6001/auth/register', inputs);
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/auth/register`,
+      inputs
+    );
 
     localStorage.setItem('userToken', res.data.token);
     localStorage.setItem('userId', res.data.user._id);

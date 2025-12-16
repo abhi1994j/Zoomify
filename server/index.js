@@ -18,7 +18,9 @@ const app = express();
 
 app.use(express.json());
 app.use(bodyParser.json({limit: "30mb", extended: true}));
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONT_baseURL,
+}));
 
 app.use('/auth', authRoutes);
 
@@ -46,8 +48,6 @@ mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(()=>{
-
-
     server.listen(PORT, ()=>{
         console.log(`Running @ ${PORT}`);
     });
