@@ -42,7 +42,7 @@ io.on("connection", (socket) =>{
 
 })
 const PORT = 6001;
-mongoose.connect('mongodb+srv://abhibaban4_db_user:NTZmAx6pT2I7jQC9@cluster0.3u3mnts.mongodb.net/', {
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(()=>{
