@@ -1,0 +1,170 @@
+/* =====================================================
+SMART MEET – LOGIN / REGISTER UI
+Style: Premium Glass + Neon Gradient
+===================================================== */
+
+:root {
+    --primary: #6366f1;
+    --secondary: #22c55e;
+    --accent: #ec4899;
+    --dark: #020617;
+    --light: #f8fafc;
+    --glass: rgba(255, 255, 255, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ================= PAGE CONTAINER ================= */
+.formContainer {
+    min-height: 100vh;
+    width: 100%;
+    background:
+        radial-gradient(circle at top right, #312e81, transparent 40%),
+        radial-gradient(circle at bottom left, #831843, transparent 45%),
+        linear-gradient(180deg, #020617, #020617);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ================= HEADER ================= */
+.smart-header {
+    width: 100%;
+    padding: 22px 64px;
+    display: flex;
+    justify-content: center;
+}
+
+.smart-logo h2 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+#smart-logo-h2 {
+    text-decoration: none;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ================= FORM WRAPPER ================= */
+.formWrapper {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 420px;
+    padding: 38px 34px;
+    border-radius: 26px;
+    background: linear-gradient(135deg, var(--glass), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 45px 90px rgba(0, 0, 0, 0.6);
+    color: #e5e7eb;
+    animation: fadeUp .7s ease forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.title {
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 26px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ================= FORM ================= */
+.formWrapper form {
+    width: 100%;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #c7d2fe;
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 12px 18px !important;
+    font-weight: 600;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.45) !important;
+}
+
+/* ================= BUTTON ================= */
+.btn-primary {
+    width: 100%;
+    margin-top: 18px;
+    padding: 14px 0;
+    border-radius: 999px !important;
+    border: none !important;
+    font-weight: 800;
+    letter-spacing: .5px;
+    background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+    box-shadow: 0 18px 45px rgba(99, 102, 241, 0.5);
+    transition: all .3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 28px 65px rgba(236, 72, 153, 0.55);
+}
+
+/* ================= FOOT TEXT ================= */
+.formWrapper p {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 14px;
+    color: #cbd5f5;
+}
+
+.formWrapper p a {
+    color: #a5b4fc;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.formWrapper p a:hover {
+    text-decoration: underline;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 480px) {
+    .smart-header {
+        padding: 18px 20px;
+    }
+
+    .formWrapper {
+        margin: 20px;
+        padding: 30px 22px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+}

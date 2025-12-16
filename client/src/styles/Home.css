@@ -1,0 +1,330 @@
+/* =====================================================
+ZOOMIFY – PREMIUM / UNIQUE UI THEME
+Style: Neo-Glass + Gradient Motion
+===================================================== */
+
+:root {
+  --primary: #6366f1;
+  --secondary: #22c55e;
+  --accent: #ec4899;
+  --dark: #020617;
+  --light: #f8fafc;
+  --glass: rgba(255, 255, 255, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.homePage {
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #1e1b4b, #020617 60%);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e5e7eb;
+  overflow-x: hidden;
+}
+
+/* ================= HERO ================= */
+.homePage-hero {
+  min-height: 100vh;
+  position: relative;
+  background:
+    linear-gradient(120deg, rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.4)),
+    url('../images/home-bg.png') center/cover no-repeat;
+}
+
+/* animated glow */
+.homePage-hero::after {
+  content: '';
+  position: absolute;
+  inset: -200px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 60%);
+  animation: pulseGlow 8s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    transform: scale(1);
+    opacity: .6;
+  }
+
+  to {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* ================= HEADER ================= */
+.home-header {
+  position: relative;
+  z-index: 2;
+  padding: 22px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-logo h2 {
+  font-size: 28px;
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-before-login button,
+.header-after-login button {
+  padding: 10px 26px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  box-shadow: 0 12px 35px rgba(99, 102, 241, 0.45);
+  transition: all .35s ease;
+}
+
+.header-before-login button:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* ================= CONTENT ================= */
+.home-container {
+  position: relative;
+  z-index: 2;
+  min-height: calc(100vh - 90px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.home-app-intro {
+  max-width: 900px;
+  text-align: center;
+}
+
+.home-app-intro .welcome {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.2);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.home-app-intro h2 {
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.home-app-intro p {
+  margin-top: 18px;
+  font-size: 17px;
+  color: #cbd5f5;
+}
+
+.home-app-intro button {
+  margin-top: 30px;
+  padding: 16px 40px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--secondary), #4ade80);
+  color: #022c22;
+  box-shadow: 0 18px 40px rgba(34, 197, 94, 0.45);
+  transition: all .3s ease;
+}
+
+.home-app-intro button:hover {
+  transform: translateY(-4px);
+}
+
+/* ================= MEET GLASS PANEL ================= */
+.home-meet-container {
+  margin-top: 45px;
+  width: 100%;
+  max-width: 720px;
+  padding: 36px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, var(--glass), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55);
+}
+
+.create-meet,
+.join-meet {
+  display: flex;
+  gap: 14px;
+}
+
+.create-meet input,
+.join-meet input {
+  flex: 1;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.create-meet button,
+.join-meet button {
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), #818cf8);
+  transition: all .3s ease;
+}
+
+.create-meet button:hover,
+.join-meet button:hover {
+  transform: scale(1.08);
+}
+
+.home-meet-container p {
+  margin: 22px 0;
+  text-align: center;
+  font-weight: 700;
+  color: #e0e7ff;
+}
+
+.home-meet-container span {
+  display: block;
+  margin-top: 12px;
+  color: #f87171;
+  font-weight: 600;
+}
+
+/* ================= ABOUT ================= */
+.about-app-container {
+  padding: 100px 60px;
+  background: linear-gradient(180deg, #020617, #030712);
+}
+
+.box {
+  max-width: 760px;
+  height: 280px;
+  margin: 0 auto 80px;
+  perspective: 1400px;
+}
+
+.box-inner {
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .9s cubic-bezier(.4, .2, .2, 1);
+}
+
+.box:hover .box-inner {
+  transform: rotateY(180deg) scale(1.03);
+}
+
+.box-front,
+.box-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  padding: 44px;
+  backface-visibility: hidden;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .6);
+}
+
+.box-front {
+  background: linear-gradient(135deg, #6366f1, #4338ca);
+}
+
+.box-back {
+  background: linear-gradient(135deg, #22c55e, #15803d);
+  transform: rotateY(180deg);
+}
+
+/* ================= FEATURE CARDS ================= */
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.about-card-body {
+  background: linear-gradient(145deg, #020617, #020617);
+  border-radius: 28px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  text-align: center;
+  padding: 34px 24px;
+  box-shadow: inset 0 0 0 rgba(99, 102, 241, 0), 0 22px 50px rgba(0, 0, 0, .6);
+  transition: all .35s ease;
+}
+
+.about-card-body:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 35px 80px rgba(99, 102, 241, .45);
+}
+
+.about-card-title span {
+  font-size: 46px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-card-text {
+  margin-top: 18px;
+  color: #c7d2fe;
+  line-height: 1.65;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  padding: 40px 20px;
+  text-align: center;
+  background: radial-gradient(circle at top, #1e1b4b, #020617);
+}
+
+.footer h2 {
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+
+.footer-social-media {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+}
+
+.footer-social-media svg {
+  font-size: 30px;
+  cursor: pointer;
+  color: #a5b4fc;
+  transition: transform .3s ease, color .3s ease;
+}
+
+.footer-social-media svg:hover {
+  transform: scale(1.3) rotate(8deg);
+  color: var(--accent);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .home-header {
+    padding: 16px 22px;
+  }
+
+  .home-app-intro h2 {
+    font-size: 32px;
+  }
+
+  .home-meet-container {
+    padding: 26px;
+  }
+
+  .about-app-container {
+    padding: 70px 20px;
+  }
+}
