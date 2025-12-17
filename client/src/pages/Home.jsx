@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import '../styles/Home.css';
 import { AuthContext } from '../context/authContext';
 import { SocketContext } from '../context/SocketContext';
@@ -22,6 +24,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
 const Home = () => {
+  const [showModal, setShowModal] = useState(false);
   const [roomName, setRoomName] = useState('');
   const [newMeetDate, setNewMeetDate] = useState('none');
   const [newMeetTime, setNewMeetTime] = useState('none');
@@ -95,7 +98,7 @@ const Home = () => {
             <h2>Zoomify</h2>
           </div>
 
-          {!user  ? (
+          {!user ? (
             <div className="header-before-login">
               <button onClick={handleLogIn}>login</button>
             </div>
@@ -162,6 +165,7 @@ const Home = () => {
                     onChange={(e) => setRoomName(e.target.value)}
                   />
                   <button
+                    onClick={() => setShowModal(true)}
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >
@@ -184,12 +188,12 @@ const Home = () => {
               </div>
 
               {/* Modal */}
-              <div
+              {/* <div
                 class="modal fade"
                 id="staticBackdrop"
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
-                tabindex="-1"
+                tabindex={-1}
                 aria-labelledby="staticBackdropLabel"
                 aria-hidden="true"
               >
@@ -210,7 +214,7 @@ const Home = () => {
                       ></button>
                     </div>
                     <div class="modal-body">
-                      {/* <input type='text' class="form-control" placeholder='Name your meet' value={roomName} onChange={(e)=> setRoomName(e.target.value)}  /> */}
+                       <input type='text' class="form-control" placeholder='Name your meet' value={roomName} onChange={(e)=> setRoomName(e.target.value)}  />
                       <div class="form-floating mb-3 ">
                         <input
                           type="text"
@@ -285,7 +289,189 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
+              {/* Modal */}
+              {/* <div
+                className="modal fade"
+                id="staticBackdrop"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabIndex={-1}
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div
+                  className="modal-dialog modal-dialog-centered"
+                  style={{ width: '30vw' }}
+                >
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="staticBackdropLabel">
+                        Create New Meet
+                      </h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div className="modal-body">
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="floatingInput"
+                          placeholder="Name your meet"
+                          value={roomName}
+                          onChange={(e) => setRoomName(e.target.value)}
+                        />
+                        <label htmlFor="floatingInput">Meet name</label>
+                      </div>
+
+                      <select
+                        className="form-select"
+                        aria-label="Default select example"
+                        onChange={(e) => setNewMeetType(e.target.value)}
+                      >
+                        <option>Choose meet type</option>
+                        <option value="instant">Instant meet</option>
+                        <option value="scheduled">Schedule for later</option>
+                      </select>
+
+                      {newMeetType === 'scheduled' && (
+                        <>
+                          <p
+                            style={{
+                              margin: '10px 0px 0px 0px',
+                              color: 'rgb(2, 34, 58)',
+                            }}
+                          >
+                            Meet Date:{' '}
+                          </p>
+                          <input
+                            type="date"
+                            className="form-control"
+                            onChange={(e) => setNewMeetDate(e.target.value)}
+                          />
+                          <p
+                            style={{
+                              margin: '10px 0px 0px 0px',
+                              color: 'rgb(2, 34, 58)',
+                            }}
+                          >
+                            Meet Time:{' '}
+                          </p>
+                          <input
+                            type="time"
+                            className="form-control"
+                            onChange={(e) => setNewMeetTime(e.target.value)}
+                          />
+                        </>
+                      )}
+                    </div>
+                    <div className="modal-footer">
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={handleCreateRoom}
+                        data-bs-dismiss="modal"
+                      >
+                        Create meet
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
+              {/* Modal */}
+              <Modal
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                centered
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Create New Meet</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <div className="form-floating mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="floatingInput"
+                      placeholder="Name your meet"
+                      value={roomName}
+                      onChange={(e) => setRoomName(e.target.value)}
+                    />
+                    <label htmlFor="floatingInput">Meet name</label>
+                  </div>
+
+                  <select
+                    className="form-select"
+                    aria-label="Default select example"
+                    onChange={(e) => setNewMeetType(e.target.value)}
+                    value={newMeetType}
+                  >
+                    <option value="">Choose meet type</option>
+                    <option value="instant">Instant meet</option>
+                    <option value="scheduled">Schedule for later</option>
+                  </select>
+
+                  {newMeetType === 'scheduled' && (
+                    <>
+                      <p
+                        style={{
+                          margin: '10px 0px 0px 0px',
+                          color: 'rgb(2, 34, 58)',
+                        }}
+                      >
+                        Meet Date:
+                      </p>
+                      <input
+                        type="date"
+                        className="form-control"
+                        onChange={(e) => setNewMeetDate(e.target.value)}
+                      />
+                      <p
+                        style={{
+                          margin: '10px 0px 0px 0px',
+                          color: 'rgb(2, 34, 58)',
+                        }}
+                      >
+                        Meet Time:
+                      </p>
+                      <input
+                        type="time"
+                        className="form-control"
+                        onChange={(e) => setNewMeetTime(e.target.value)}
+                      />
+                    </>
+                  )}
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button
+                    variant="secondary"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      handleCreateRoom();
+                      setShowModal(false);
+                    }}
+                  >
+                    Create meet
+                  </Button>
+                </Modal.Footer>
+              </Modal>
             </>
           )}
         </div>
