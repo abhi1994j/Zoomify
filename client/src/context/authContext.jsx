@@ -34,7 +34,7 @@ export const AuthContextProvider = ({ children }) => {
 
     navigate('/');
   };
-
+  console.log(`${process.env.REACT_APP_API_BASE_URL}/auth/register`);
   const register = async (inputs) => {
     const res = await axios.post(
       `${process.env.REACT_APP_API_BASE_URL}/auth/register`,
