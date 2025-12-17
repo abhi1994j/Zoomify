@@ -166,8 +166,8 @@ const Home = () => {
                   />
                   <button
                     onClick={() => setShowModal(true)}
-                    data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
+                    // data-bs-toggle="modal"
+                    // data-bs-target="#staticBackdrop"
                   >
                     <RiVideoAddFill /> New meet
                   </button>
