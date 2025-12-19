@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createContext, useState } from 'react';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
@@ -16,45 +17,66 @@ export const AuthContextProvider = ({ children }) => {
   });
 
   const login = async (inputs) => {
-    const res = await axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/auth/login`,
-      inputs
-    );
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/auth/login`,
+        inputs
+      );
 
-    localStorage.setItem('userToken', res.data.token);
-    localStorage.setItem('userId', res.data.user._id);
-    localStorage.setItem('userName', res.data.user.username);
-    localStorage.setItem('userEmail', res.data.user.email);
+      localStorage.setItem('userToken', res.data.token);
+      localStorage.setItem('userId', res.data.user._id);
+      localStorage.setItem('userName', res.data.user.username);
+      localStorage.setItem('userEmail', res.data.user.email);
 
-    setUser({
-      id: res.data.user._id,
-      name: res.data.user.username,
-      email: res.data.user.email,
-    });
+      setUser({
+        id: res.data.user._id,
+        name: res.data.user.username,
+        email: res.data.user.email,
+      });
 
-    navigate('/');
+      toast.success('Login successful');
+      navigate('/');
+    } catch (error) {
+      // ❗ Do not rethrow
+      const message =
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        'Invalid email or password';
+
+      toast.error(message);
+    }
   };
+
   console.log(`${process.env.REACT_APP_API_BASE_URL}/auth/register`);
   const register = async (inputs) => {
-    const res = await axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/auth/register`,
-      inputs
-    );
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/auth/register`,
+        inputs
+      );
 
-    localStorage.setItem('userToken', res.data.token);
-    localStorage.setItem('userId', res.data.user._id);
-    localStorage.setItem('userName', res.data.user.username);
-    localStorage.setItem('userEmail', res.data.user.email);
+      // Save user data in localStorage
+      localStorage.setItem('userToken', res.data.token);
+      localStorage.setItem('userId', res.data.user._id);
+      localStorage.setItem('userName', res.data.user.username);
+      localStorage.setItem('userEmail', res.data.user.email);
 
-    setUser({
-      id: res.data.user._id,
-      name: res.data.user.username,
-      email: res.data.user.email,
-    });
+      // Set user context
+      setUser({
+        id: res.data.user._id,
+        name: res.data.user.username,
+        email: res.data.user.email,
+      });
 
-    navigate('/');
+      toast.success('Registration successful!');
+      navigate('/'); // Redirect to homepage or dashboard
+    } catch (err) {
+      console.error(err);
+      const errorMessage =
+        err.response?.data?.message || 'Registration failed. Please try again.';
+      toast.error(errorMessage);
+    }
   };
-
   const logout = () => {
     localStorage.clear();
     setUser(null);

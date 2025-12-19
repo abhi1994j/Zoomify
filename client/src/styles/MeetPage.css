@@ -147,8 +147,34 @@
     border: none;
 }
 
+/* Green border around screen when sharing */
+.screen-sharing-active {
+    border: 5px solid #4CAF50;
+    /* green */
+    border-radius: 8px;
+    /* optional rounded corners */
+    box-sizing: border-box;
+    transition: border 0.3s ease-in-out;
+}
 
+@keyframes borderFlash {
+    0% {
+        border-color: #4CAF50;
+    }
 
+    50% {
+        border-color: #00FF00;
+    }
+
+    100% {
+        border-color: #4CAF50;
+    }
+}
+
+.screen-sharing-active {
+    border: 5px solid #4CAF50;
+    animation: borderFlash 0.5s ease-in-out;
+}
 /* Participants */
 
 .participants-page {

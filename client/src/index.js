@@ -7,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './context/authContext';
+import { ToastContainer } from 'react-toastify';
 import { CookiesProvider } from 'react-cookie';
 import { SocketContextProvider } from './context/SocketContext';
 
@@ -18,7 +19,14 @@ root.render(
       <SocketContextProvider>
 
         <App />
-
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnHover
+          theme="dark"
+        />
       </SocketContextProvider>
     </AuthContextProvider>
   </BrowserRouter>

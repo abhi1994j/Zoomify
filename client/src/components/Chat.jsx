@@ -25,6 +25,17 @@ const Chat = ({ roomId, userId }) => {
   //   setTextInput('');
   //   setFile(null);
   // };
+  const handleFileChange =(e) => {
+    const selectedFile = e.target.files[0];
+    if (!selectedFile) return;
+
+    if (selectedFile.size > 2 * 1024 * 1024) {
+      alert("File too large (Max 2MB)");
+      e.target.value = ""; // reset input
+      return;
+    }
+    setFile(selectedFile);
+  }
 
   const sendMsg = async () => {
     if (!textInput && !file) return;
@@ -144,7 +155,7 @@ const Chat = ({ roomId, userId }) => {
           <input
             type="file"
             id="fileInput"
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={(e)=>handleFileChange(e)}
           />
           <label htmlFor="fileInput">
             <AttachFileIcon />

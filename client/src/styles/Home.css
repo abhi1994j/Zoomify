@@ -143,63 +143,181 @@ Style: Neo-Glass + Gradient Motion
 }
 
 /* ================= MEET GLASS PANEL ================= */
+/* ===============================
+   CONTAINER
+================================ */
 .home-meet-container {
-  margin-top: 45px;
   width: 100%;
   max-width: 720px;
-  padding: 36px;
-  border-radius: 26px;
-  background: linear-gradient(135deg, var(--glass), rgba(255, 255, 255, 0.05));
+  margin: 3rem auto 0;
+  padding: 2.2rem;
+  border-radius: 28px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.05)
+  );
   backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
 }
 
+/* ===============================
+   CREATE / JOIN ROWS
+================================ */
 .create-meet,
 .join-meet {
   display: flex;
-  gap: 14px;
+  align-items: center;
+  gap: 0.9rem;
 }
 
+/* ===============================
+   INPUTS
+================================ */
 .create-meet input,
 .join-meet input {
   flex: 1;
-  padding: 14px 22px;
+  padding: 0.85rem 1.3rem;
   border-radius: 999px;
   border: none;
   outline: none;
-  background: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
   font-weight: 600;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1e293b;
+  transition: box-shadow 0.25s ease;
 }
 
+.create-meet input:focus,
+.join-meet input:focus {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.35);
+}
+
+/* ===============================
+   BUTTONS
+================================ */
 .create-meet button,
 .join-meet button {
-  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
   border-radius: 999px;
   border: none;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: #fff;
+  color: #ffffff;
   background: linear-gradient(135deg, var(--primary), #818cf8);
-  transition: all .3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .create-meet button:hover,
 .join-meet button:hover {
-  transform: scale(1.08);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(99, 102, 241, 0.45);
 }
 
+/* ===============================
+   OR DIVIDER
+================================ */
 .home-meet-container p {
-  margin: 22px 0;
+  margin: 1.6rem 0;
   text-align: center;
   font-weight: 700;
   color: #e0e7ff;
+  position: relative;
 }
 
+.home-meet-container p::before,
+.home-meet-container p::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 35%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.home-meet-container p::before {
+  left: 0;
+}
+
+.home-meet-container p::after {
+  right: 0;
+}
+
+/* ===============================
+   ERROR MESSAGE
+================================ */
 .home-meet-container span {
   display: block;
-  margin-top: 12px;
-  color: #f87171;
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 600;
+  color: #f87171;
+  text-align: center;
+}
+
+/* ===============================
+   TABLET (≤768px)
+================================ */
+@media (max-width: 768px) {
+  .home-meet-container {
+    padding: 1.8rem;
+  }
+
+  .create-meet,
+  .join-meet {
+    gap: 0.7rem;
+  }
+
+  .create-meet button,
+  .join-meet button {
+    padding: 0.8rem 1.3rem;
+  }
+}
+
+/* ===============================
+   MOBILE (≤480px)
+================================ */
+@media (max-width: 480px) {
+  .home-meet-container {
+    padding: 1.5rem;
+    border-radius: 22px;
+  }
+
+  .create-meet,
+  .join-meet {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .create-meet input,
+  .join-meet input,
+  .create-meet button,
+  .join-meet button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .home-meet-container p::before,
+  .home-meet-container p::after {
+    width: 28%;
+  }
+}
+
+/* ===============================
+   TOUCH DEVICES
+================================ */
+@media (hover: none) {
+  .create-meet button:hover,
+  .join-meet button:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 /* ================= ABOUT ================= */
@@ -208,41 +326,132 @@ Style: Neo-Glass + Gradient Motion
   background: linear-gradient(180deg, #020617, #030712);
 }
 
+/* ===============================
+   FLIP CARD CONTAINER
+================================ */
 .box {
+  width: 100%;
   max-width: 760px;
   height: 280px;
-  margin: 0 auto 80px;
+  margin: 0 auto 5rem;
   perspective: 1400px;
+  padding: 0 1rem;
 }
 
+/* ===============================
+   INNER FLIP WRAPPER
+================================ */
 .box-inner {
+  width: 100%;
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform .9s cubic-bezier(.4, .2, .2, 1);
+  transition: transform 0.9s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
 .box:hover .box-inner {
-  transform: rotateY(180deg) scale(1.03);
+  transform: rotateY(180deg) scale(1.04);
 }
 
+/* ===============================
+   FRONT & BACK
+================================ */
 .box-front,
 .box-back {
   position: absolute;
   inset: 0;
   border-radius: 28px;
-  padding: 44px;
+  padding: 2.8rem;
   backface-visibility: hidden;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, .6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  color: #ffffff;
 }
 
+/* FRONT */
 .box-front {
   background: linear-gradient(135deg, #6366f1, #4338ca);
 }
 
+/* BACK */
 .box-back {
   background: linear-gradient(135deg, #22c55e, #15803d);
   transform: rotateY(180deg);
+}
+
+/* ===============================
+   TYPOGRAPHY
+================================ */
+.box-front h2,
+.box-back h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.box-front p,
+.box-back p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* ===============================
+   MOBILE / TABLET
+================================ */
+@media (max-width: 768px) {
+  .box {
+    height: auto;
+  }
+
+  .box-inner {
+    transform: none !important;
+  }
+
+  .box-front,
+  .box-back {
+    position: relative;
+    transform: none;
+    margin-bottom: 1.5rem;
+    padding: 2rem;
+  }
+
+  .box:hover .box-inner {
+    transform: none;
+  }
+}
+
+/* ===============================
+   SMALL DEVICES
+================================ */
+@media (max-width: 480px) {
+
+  .box-front h2,
+  .box-back h2 {
+    font-size: 1.4rem;
+  }
+
+  .box-front p,
+  .box-back p {
+    font-size: 0.9rem;
+  }
+
+  .box-front,
+  .box-back {
+    padding: 1.6rem;
+    border-radius: 22px;
+  }
+}
+
+/* ===============================
+   ACCESSIBILITY (Touch Devices)
+================================ */
+@media (hover: none) {
+  .box-inner {
+    transform: none !important;
+  }
 }
 
 /* ================= FEATURE CARDS ================= */

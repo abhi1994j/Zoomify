@@ -1,242 +1,223 @@
-.myMeets-body{
+/* ===============================
+   ROOT CONTAINER
+================================ */
+.myMeets-body {
     width: 100%;
-    height: 40vh;
+    min-height: 100%;
+    margin-bottom: 2rem;
 }
 
-.myMeets-body .myMeets-body-nav{
-    /* width: 100%; */
-    background-color: rgba(0, 98, 179, 0.92);
-    backdrop-filter: blur(5px);
+/* ===============================
+   NAVIGATION TABS
+================================ */
+.myMeets-body-nav {
+    background: linear-gradient(135deg, #0b5ed7, #084298);
     display: flex;
-    height: 10vh;
-    align-items:end;
-    justify-content: left;
-    margin: 3vh 2% 0 2%;
-    border-radius: 2rem;
+    align-items: center;
+    padding: 0 2rem;
+    height: 50px;
+    margin: 1.5rem 2%;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
-.myMeets-body .myMeets-body-nav ul{
-    
+
+.myMeets-body-nav ul {
     display: flex;
-    flex-direction: row;
-    gap: 30px;
+    gap: 10rem;
+    padding: 0;
+    margin: 0;
 }
-.myMeets-body .myMeets-body-nav ul li{
-    list-style-type: none;
-    padding-bottom: 2px;
-    color: rgb(245, 252, 254);
+
+.myMeets-body-nav ul li {
+    list-style: none;
+    padding-bottom: 0.4rem;
+    color: #f8f9fa;
     font-weight: 500;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
 }
 
-.myMeets-body-content{
-
-    padding: 2% 5%;
+.myMeets-body-nav ul li:hover {
+    color: #e3f2fd;
 }
-.myMeets-body-content::-webkit-scrollbar {
-    display: none;
-}  
+
+/* ===============================
+   CONTENT AREA
+================================ */
 .myMeets-body-content {
--ms-overflow-style: none;  /* IE and Edge */
-scrollbar-width: none;  /* Firefox */
-}
-/* upcomming meets */
-
-.upcomming-meet-content{
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
-    gap: 20px;
-    /* overflow-y: scroll;
-    height: 60vh;
-    padding-top: 50vh; */
+    padding: 1.5rem 5%;
 }
 
-
-.upcomming-meet-content .upcomming-meet-card{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border: 1px solid rgba(98, 167, 223, 0.393);
-    align-items:stretch;
-    justify-content: space-between;
-    border-radius: 1rem;
-    padding:  10px 30px;
-    background-color: rgba(241, 250, 255, 0.418);
-}
-.upcomming-meet-content .upcomming-meet-card .details-controls{
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.upcomming-meet-card .meet-card-details{
-    display: flex;   
-    gap: 30px;
-}
-.upcomming-meet-card .meet-card-details p{
-    padding: 0;
-    margin: 0;
-    color: rgb(43, 107, 198);
-    font-weight: 500;
-}
-
-.upcomming-meet-card .meet-card-details p span{
-    padding: 0;
-    margin: 0;
-    color: rgb(13, 82, 125);
-    font-weight: 400;
-}
-
-.upcomming-meet-card .meet-card-controls{
-    display: flex;
-    gap: 5px;
-}
-.upcomming-meet-card .meet-card-controls button{
-    border: none;
-    margin: 0;
-    padding: 5px 10px;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    color: rgb(255, 255, 255);
-    font-size: 0.7rem;
-    /* background-color: rgb(231, 26, 26); */
-}
-.upcomming-meet-card .meet-card-controls .joinBtn{
-    background-color: rgb(7, 134, 60);
-}
-.upcomming-meet-card .meet-card-controls .editBtn{
-    background-color: rgb(8, 64, 112);
-}
-.upcomming-meet-card .meet-card-controls .deleteBtn{
-    background-color: rgb(193, 10, 10);
-}
-
-.upcomming-meet-card .meet-card-timings{
-    display: flex;
-    flex-direction: column;
-}
-
-.upcomming-meet-card .meet-card-timings h4{
-    margin: 0;
-    padding: 0;
-    font-size: 1rem;
-    color: rgb(10, 65, 128);
-}
-
-.upcomming-meet-card .meet-card-timings .meet-card-timings-details{
-    display: flex;
-    gap: 30px;
-}
-
-.upcomming-meet-card .meet-card-timings .meet-card-timings-details p{
-    margin: 0;
-    font-size: 0.8rem;
-    color: rgb(7, 76, 113);
-}
-
-.upcomming-meet-card .meet-card-timings .meet-card-timings-details p span{
-    margin: 0;
-    color: rgb(5, 43, 74);
-}
-
-
-/* Past meets */
-
-
-.past-meet-content{
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
-    gap: 20px;
-    /* overflow-y: scroll; */
-    /* height: 60vh; */
-    /* padding-top: 100vh; */
-    
-}
-.past-meet-content::-webkit-scrollbar {
-    display: none;
-}  
+/* ===============================
+   UPCOMING & PAST MEETS COMMON
+================================ */
+.upcomming-meet-content,
 .past-meet-content {
--ms-overflow-style: none;  
-scrollbar-width: none;  
-}
-
-.past-meet-content .past-meet-card{
     display: flex;
     flex-direction: column;
-    width: 80%;
-    border: 1px solid rgba(98, 167, 223, 0.393);
-    align-items:stretch;
-    justify-content: space-between;
-    border-radius: 1rem;
-    padding:  10px 30px;
-    background-color: rgba(241, 250, 255, 0.418);
+    gap: 1.5rem;
+    align-items: center;
 }
-.past-meet-content .past-meet-card .details-controls{
+
+/* ===============================
+   MEET CARD (COMMON)
+================================ */
+.upcomming-meet-card,
+.past-meet-card {
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 1.2rem;
+    padding: 1.2rem 1.8rem;
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upcomming-meet-card:hover,
+.past-meet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* ===============================
+   DETAILS & CONTROLS
+================================ */
+.details-controls {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-
-.past-meet-card .meet-card-details{
-    display: flex;   
-    gap: 30px;
+.meet-card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
 }
-.past-meet-card .meet-card-details p{
-    padding: 0;
+
+.meet-card-details p {
     margin: 0;
-    color: rgb(43, 107, 198);
+    font-size: 0.95rem;
+    color: #0d6efd;
     font-weight: 500;
 }
 
-.past-meet-card .meet-card-details p span{
-    padding: 0;
-    margin: 0;
-    color: rgb(13, 82, 125);
+.meet-card-details span {
+    color: #084298;
     font-weight: 400;
 }
 
-.past-meet-card .meet-card-controls{
+/* ===============================
+   BUTTONS
+================================ */
+.meet-card-controls {
     display: flex;
-    gap: 5px;
+    gap: 0.6rem;
+    flex-wrap: wrap;
 }
-.past-meet-card .meet-card-controls button{
+
+.meet-card-controls button {
     border: none;
-    margin: 0;
-    padding: 5px 20px;
+    padding: 0.45rem 0.9rem;
     border-radius: 0.5rem;
+    font-size: 0.75rem;
     font-weight: 500;
-    color: rgb(255, 255, 255);
-    /* background-color: rgb(231, 26, 26); */
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.25s ease;
 }
 
-.past-meet-card .meet-card-timings{
+.joinBtn {
+    background: linear-gradient(135deg, #198754, #157347);
+}
+
+.editBtn {
+    background: linear-gradient(135deg, #0d6efd, #084298);
+}
+
+.deleteBtn {
+    background: linear-gradient(135deg, #dc3545, #bb2d3b);
+}
+
+.meet-card-controls button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* ===============================
+   TIMINGS SECTION
+================================ */
+.meet-card-timings {
+    margin-top: 0.8rem;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    padding-top: 0.6rem;
+}
+
+.meet-card-timings h4 {
+    margin: 0 0 0.4rem 0;
+    font-size: 0.95rem;
+    color: #084298;
+}
+
+.meet-card-timings-details {
     display: flex;
-    flex-direction: column;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
-.past-meet-card .meet-card-timings h4{
-    margin: 0;
-    padding: 0;
-    font-size: 1rem;
-    color: rgb(10, 65, 128);
-}
-
-.past-meet-card .meet-card-timings .meet-card-timings-details{
-    display: flex;
-    gap: 30px;
-}
-
-.past-meet-card .meet-card-timings .meet-card-timings-details p{
+.meet-card-timings-details p {
     margin: 0;
     font-size: 0.8rem;
-    color: rgb(7, 76, 113);
+    color: #495057;
 }
 
-.past-meet-card .meet-card-timings .meet-card-timings-details p span{
-    margin: 0;
-    color: rgb(5, 43, 74);
+.meet-card-timings-details span {
+    color: #212529;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================ */
+@media (max-width: 768px) {
+    .myMeets-body-nav {
+        height: auto;
+        padding: 1rem;
+    }
+
+    .myMeets-body-nav ul {
+        gap: 1rem;
+    }
+
+    .details-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .meet-card-controls {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .upcomming-meet-card,
+    .past-meet-card {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .myMeets-body-content {
+        padding: 1rem;
+    }
+
+    .meet-card-details p {
+        font-size: 0.85rem;
+    }
+
+    .meet-card-controls button {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.7rem;
+    }
 }

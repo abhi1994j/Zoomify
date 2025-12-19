@@ -1,80 +1,161 @@
-.profile-card-body{
-    height: 50vh;
-    border-radius: 1rem;
-    /* border: 2px solid #1e53d0; */
-    padding: 5%;
-    
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+/* ===== Card Container ===== */
+.profile-card-body {
+    width: 100%;
+    max-width: 380px;
+    margin: auto;
+    padding: 24px 20px;
+    border-radius: 16px;
+    background: linear-gradient(135deg,
+            rgba(240, 248, 255, 0.9),
+            rgba(225, 238, 250, 0.9));
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.profile-card-body button{
-    position: relative;
-    left: 85%;
-    border:none;
-    background-color: rgba(240, 248, 255, 0);
-    color: rgb(15, 79, 132);
-    
+.profile-card-body:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
 }
+
+/* ===== Edit Button ===== */
+#update-details-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #0f4f84;
+    padding: 6px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#update-details-btn:hover {
+    background-color: rgba(15, 79, 132, 0.1);
+    transform: scale(1.05);
+}
+
+/* ===== Profile Content ===== */
 .profile-data {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    gap: 12px;
+    margin-top: 20px;
 }
-.profile-data .profile-img{
+
+/* ===== Profile Image ===== */
+.profile-img {
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    border: 2px solid #1e53d033;
+    background: #ffffff;
+    border: 3px solid rgba(30, 83, 208, 0.25);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
-}
-.profile-card-body img{
-    width: 100px;
-    height: 100px;
 }
 
-.profile-card-body .profile-info{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.profile-img img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.profile-card-body .profile-info p{
-    margin: 0;
+/* ===== Profile Info ===== */
+.profile-info {
+    text-align: center;
+}
+
+.profile-info p {
+    margin: 4px 0;
+    font-size: 0.95rem;
     color: rgb(2, 34, 58);
     font-weight: 500;
 }
-.profile-card-body .profile-info p span{
+
+.profile-info p span {
     color: rgb(44, 108, 156);
+    font-weight: 600;
 }
 
-.profile-card-body .update-data{   
+/* ===== Update Form ===== */
+.update-data {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    justify-content: center;
+    gap: 12px;
     align-items: center;
 }
-.profile-card-body .update-data input{   
-    border: none;
-    background-color: rgba(112, 114, 116, 0.128);
-    backdrop-filter: blur(5px);
-    padding: 5px 10px;
-    border-radius: 0.4rem;
+
+.update-data input {
+    width: 100%;
+    max-width: 260px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    outline: none;
+    font-size: 0.9rem;
     color: rgb(4, 59, 89);
+    background-color: rgba(255, 255, 255, 0.85);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.update-data input:focus {
+    border-color: #1e53d0;
+    box-shadow: 0 0 0 2px rgba(30, 83, 208, 0.2);
+}
 
-.profile-card-body .update-data #update-btn{   
-    /* width: 50px; */
-    position: relative;
-    top: 0;
-    left: -10px;
+/* ===== Update Button ===== */
+#update-btn {
     background-color: rgb(21, 92, 135);
-    padding: 5px 20px;
-    border-radius: 0.3rem;
-    color: #fff;
+    color: #ffffff;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#update-btn:hover {
+    background-color: rgb(15, 70, 110);
+    transform: translateY(-1px);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .profile-card-body {
+        max-width: 320px;
+        padding: 20px 16px;
+    }
+
+    .profile-img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .profile-img img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-info p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-card-body {
+        max-width: 100%;
+        border-radius: 12px;
+    }
+
+    #update-details-btn {
+        top: 12px;
+        right: 12px;
+    }
 }

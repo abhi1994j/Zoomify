@@ -168,3 +168,10 @@ body {
         font-size: 24px;
     }
 }
+
+.error-text {
+    color: #ef4444;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}

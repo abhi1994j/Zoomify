@@ -168,8 +168,6 @@ const Home = () => {
                   />
                   <button
                     onClick={() => setShowModal(true)}
-                    // data-bs-toggle="modal"
-                    // data-bs-target="#staticBackdrop"
                   >
                     <RiVideoAddFill /> New meet
                   </button>
@@ -480,24 +478,24 @@ const Home = () => {
       </div>
 
       <div className="about-app-container">
-        <div class="box">
-          <div class="box-inner">
-            <div class="box-front">
+        <div className="box">
+          <div className="box-inner">
+            <div className="box-front">
               <h2>Connect Anytime, Anywhere!</h2>
               <p>
                 Our video conference app brings people closer with easy
                 connectivity and affordability. Experience seamless virtual
                 meetings, collaborate effortlessly, and stay connected across
-                the globe. Say goodbye to distance and hello to convenience!
+                the globe.
               </p>
             </div>
-            <div class="box-back">
+
+            <div className="box-back">
               <h2>Your Passport to Seamless Communication!</h2>
               <p>
                 Unlock the world of effortless connectivity with our video
                 conference app. Stay connected with colleagues, friends, and
-                family, no matter where they are. Say goodbye to expensive
-                travel and hello to affordable, hassle-free meetings.
+                family—anytime, anywhere.
               </p>
             </div>
           </div>
