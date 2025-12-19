@@ -77,6 +77,15 @@ export const AuthContextProvider = ({ children }) => {
       toast.error(errorMessage);
     }
   };
+  // const logout = () => {
+  //   localStorage.removeItem('userToken');
+  //   localStorage.removeItem('userId');
+  //   localStorage.removeItem('userName');
+  //   localStorage.removeItem('userEmail');
+  //   setUser(null);
+  //   navigate('/');
+  // };
+
   const logout = () => {
     localStorage.clear();
     setUser(null);

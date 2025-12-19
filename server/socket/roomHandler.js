@@ -5,18 +5,19 @@ import { ObjectId } from 'mongoose';
 
 const roomHandler =(socket) =>{
 
-    socket.on('create-room', async ({userId, roomName, newMeetType, newMeetDate, newMeetTime})=>{
+    socket.on('create-room', async ({ userId, roomName, newMeetType, newMeetDate, newMeetTime }) => {
         const newRoom = new Rooms({
-            roomName: roomName,
+            roomName,
             host: userId,
             meetType: newMeetType,
-            meetDate: newMeetDate,
-            meetTime: newMeetTime,
+            meetDate: newMeetType === 'scheduled' ? newMeetDate : null,
+            meetTime: newMeetType === 'scheduled' ? newMeetTime : null,
             participants: [],
             currentParticipants: []
         });
+
         const room = await newRoom.save();
-        await socket.emit("room-created", {roomId: room._id, meetType: newMeetType});
+        socket.emit("room-created", { roomId: room._id, meetType: newMeetType });
     });
 
     socket.on('user-code-join', async ({roomId})=>{
@@ -62,12 +63,12 @@ const roomHandler =(socket) =>{
             { _id: { $in: participants } },
             { _id: 1, username: 1 }
           ).exec();
-        
+
         users.forEach(user => {
             const { _id, username } = user;
             usernames[ _id.valueOf().toString()] = username;
         });
-        
+
         socket.emit("participants-list", {usernames, roomName});
     })
 
@@ -82,10 +83,20 @@ const roomHandler =(socket) =>{
         socket.emit("room-deleted");
     })
 
-    socket.on("update-meet-details", async({roomId, roomName, newMeetDate, newMeetTime}) =>{
-        await Rooms.updateOne({ _id: roomId }, { $set: {roomName:roomName, newMeetDate:newMeetDate, newMeetTime:newMeetTime} });
+    socket.on("update-meet-details", async ({ roomId, roomName, newMeetDate, newMeetTime }) => {
+        await Rooms.updateOne(
+            { _id: roomId },
+            {
+                $set: {
+                    roomName,
+                    meetDate: newMeetDate,
+                    meetTime: newMeetTime
+                }
+            }
+        );
         socket.emit("meet-details-updated");
-    })
+    });
+
 
 
 
@@ -94,10 +105,10 @@ const roomHandler =(socket) =>{
         await socket.leave(roomId);
     })
 
-    socket.on('user-disconnected', async({userId, roomId})=>{ 
+    socket.on('user-disconnected', async({userId, roomId})=>{
         console.log(`user: ${userId} left room ${roomId}`);
     })
-   
+
 
     // chat
 

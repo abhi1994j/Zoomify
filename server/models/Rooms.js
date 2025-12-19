@@ -1,21 +1,23 @@
 import mongoose from "mongoose";
 
 const RoomSchema = new mongoose.Schema({
-    roomName:{
+    roomName: {
         type: String
     },
     host: {
         type: String,
         require: true
     },
-    meetType:{
+    meetType: {
         type: String,
     },
-    meetDate:{
+    meetDate: {
         type: String,
+        default: null
     },
-    meetTime:{
+    meetTime: {
         type: String,
+        default: null
     },
     participants: {
         type: Array
@@ -23,7 +25,7 @@ const RoomSchema = new mongoose.Schema({
     currentParticipants: {
         type: Array
     }
-}, {timestamps: true});
+}, { timestamps: true });
 
 const Rooms = mongoose.model("rooms", RoomSchema);
 export default Rooms;

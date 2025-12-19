@@ -15,39 +15,38 @@ const MeetData = () => {
      FILTER LOGIC (SAFE & CLEAN)
   =============================== */
 
-  const upcomingMeets = useMemo(() => {
-    return myMeets.filter((meet) => {
-      if (
-        meet.meetType !== 'scheduled' ||
-        !meet.meetDate ||
-        !meet.meetTime ||
-        meet.meetDate === 'none' ||
-        meet.meetTime === 'none'
-      )
-        return false;
+  const getMeetDateTime = (meet) => {
+    if (
+      meet.meetType !== 'scheduled' ||
+      !meet.meetDate ||
+      !meet.meetTime ||
+      meet.meetDate === 'none' ||
+      meet.meetTime === 'none'
+    ) {
+      return null;
+    }
 
-      const meetDateTime = new Date(`${meet.meetDate}T${meet.meetTime}`);
-      return new Date() < meetDateTime;
-    });
-  }, [myMeets]);
+    const dt = new Date(`${meet.meetDate}T${meet.meetTime}`);
+    return isNaN(dt.getTime()) ? null : dt;
+  };
+
+
+ const upcomingMeets = useMemo(() => {
+   return myMeets.filter((meet) => {
+     const meetDateTime = getMeetDateTime(meet);
+     return meetDateTime && new Date() < meetDateTime;
+   });
+ }, [myMeets]);
 
   const pastMeetsData = useMemo(() => {
     return myMeets.filter((meet) => {
       if (meet.meetType === 'instant') return true;
 
-      if (
-        meet.meetDate &&
-        meet.meetTime &&
-        meet.meetDate !== 'none' &&
-        meet.meetTime !== 'none'
-      ) {
-        const meetDateTime = new Date(`${meet.meetDate}T${meet.meetTime}`);
-        return new Date() > meetDateTime;
-      }
-
-      return false;
+      const meetDateTime = getMeetDateTime(meet);
+      return meetDateTime && new Date() > meetDateTime;
     });
   }, [myMeets]);
+
 
   /* ===============================
      UI

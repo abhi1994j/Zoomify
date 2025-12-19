@@ -87,6 +87,9 @@ Style: Neo-Glass + Gradient Motion
 .header-before-login button:hover {
   transform: translateY(-3px) scale(1.05);
 }
+.dropdown-options{
+  cursor: pointer;
+}
 
 /* ================= CONTENT ================= */
 .home-container {
