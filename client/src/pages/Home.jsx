@@ -40,9 +40,11 @@ const Home = () => {
   };
 
   const handleLogOut = (e) => {
+    debugger; // This will pause execution
+    console.log("log out");
     e.preventDefault();
     logout();
-  };
+};
 
   const { socket, setMyMeets, newMeetType, setNewMeetType } =
     useContext(SocketContext);
