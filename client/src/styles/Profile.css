@@ -1,4 +1,13 @@
 /* ================= Root Page ================= */
+:root {
+    --primary: #6366f1;
+    --secondary: #22c55e;
+    --accent: #ec4899;
+    --dark: #020617;
+    --light: #f8fafc;
+    --glass: rgba(255, 255, 255, 0.12);
+}
+
 .profilePage {
     min-height: 100vh;
     width: 100%;
@@ -41,12 +50,13 @@
 }
 
 .profile-header .profile-logo h2 {
-    color: #1aaaf4;
     font-size: 2rem;
-    font-family: 'Rubik Wet Paint', cursive;
-    font-weight: bold;
+    font-weight: 900;
     cursor: pointer;
     margin: 0;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* ================= Dropdown ================= */

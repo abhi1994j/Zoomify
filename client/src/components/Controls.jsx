@@ -235,6 +235,7 @@ export default function Controls(props) {
         return { ...ps, audio: !ps.audio };
       });
     } else if (type === 'video') {
+      console.log("video control button" , tracks, trackState);
       await tracks[1].setEnabled(!trackState.video);
       setTrackState((ps) => {
         return { ...ps, video: !ps.video };
@@ -282,11 +283,11 @@ export default function Controls(props) {
           onClick={() => mute('audio')}
         >
           {trackState.audio ? (
-            <Tooltip title="Mike is on" placement="top">
+            <Tooltip title="Mic is on" placement="top">
               <MicIcon />
             </Tooltip>
           ) : (
-            <Tooltip title="Mike is off" placement="top">
+            <Tooltip title="Mic is off" placement="top">
               <MicOffIcon />
             </Tooltip>
           )}
