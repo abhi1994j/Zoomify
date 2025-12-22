@@ -71,7 +71,6 @@ Style: Neo-Glass + Gradient Motion
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 .header-before-login button,
 .header-after-login button {
   padding: 10px 26px;
